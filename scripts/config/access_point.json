@@ -1,0 +1,15 @@
+{
+    "country_code": "US",
+    "mode_ac": "true",
+    "points": [
+        {
+            "interface": "wlan0",
+            "ssid": "BLESFREE"
+        },
+        {
+            "interface": "wlan1",
+            "ssid": "BLESCASH",
+            "password": "bles12345"
+        }
+    ]
+}

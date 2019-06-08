@@ -1,0 +1,28 @@
+{
+    "hostname": "bles",
+    "interfaces": [
+        {
+            "name": "lo",
+            "inet": "loopback"
+        },
+        {
+            "name": "eth0",
+            "inet": "dhcp"
+        },
+        {
+            "name": "wlan0",
+            "inet": "static",
+            "network": "192.168.0.0",
+            "address": "batata",
+            "netmask": "cenoura",
+            "broadcast": "192.168.0.255",
+            "gateway": null,
+            "domain_name": "bles",
+            "domain_name_servers": [
+                "dns.bles",
+                "8.8.8.8",
+                "8.8.4.4"
+            ]
+        }
+    ]
+}
