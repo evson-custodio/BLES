@@ -1,0 +1,32 @@
+{
+    "interface": "wlan0",
+    "subnets": [
+        {
+            "network": "192.168.0.0",
+            "netmask": "255.255.255.0",
+            "gateway": "192.168.0.1",
+            "pools": [
+                {
+                    "start_range": "192.168.0.10",
+                    "end_range": "192.168.0.254",
+                    "lease_time": "86400",
+                    "deny_hosts": "true",
+                    "domain_name": "bles",
+                    "domain_name_servers": [
+                        "dns.bles",
+                        "8.8.8.8",
+                        "8.8.4.4"
+                    ],
+                    "hosts": [
+                        {
+                            "hostname": "clientA",
+                            "mac": "01:02:03:04:05:06",
+                            "address": "192.168.0.2",
+                            "assign_hostname": "false"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

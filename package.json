@@ -1,6 +1,6 @@
 {
   "name": "bles",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "BLES - Basic Linux Embedded Server",
   "main": "index.js",
   "scripts": {
