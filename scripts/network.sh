@@ -75,8 +75,7 @@ else
     finterfaces_old=/etc/network/interfaces.old
 
     if [[ -f $finterfaces ]]; then
-        sudo cp $finterfaces $finterfaces_old
-        sudo rm -r $finterfaces
+        sudo mv $finterfaces $finterfaces_old
     fi
 
     length=$(echo $json | jq '.interfaces | length')

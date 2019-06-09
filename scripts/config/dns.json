@@ -1,0 +1,23 @@
+{
+    "domain_name_servers": [
+        "dns.bles",
+        "8.8.8.8",
+        "8.8.4.4"
+    ],
+    "zones": [
+        {
+            "network": "192.168.0.0",
+            "netmask": "255.255.255.0",
+            "domain_name": "bles",
+            "hosts": [
+                {
+                    "hostname": "dns",
+                    "address": "192.168.0.1",
+                    "aliases": [
+                        "bles", "home"
+                    ]
+                }
+            ]
+        }
+    ]
+}
