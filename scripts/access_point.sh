@@ -20,11 +20,11 @@ fi
 
 source ./tools/walk.conf
 config=$(jq '.' ./config/config.json)
-access_point=$(jq ". | $walkconfig walkconfig($config)" ./config/access_point.json)
+json=$(jq ". | $walkconfig walkconfig($config)" ./config/access_point.json)
 
-country_code=$(echo $access_point | jq -r '.country_code')
-mode_ac=$(echo $access_point | jq -r '.mode_ac')
-points=$(echo $access_point | jq -r '.points')
+country_code=$(echo $json | jq -r '.country_code')
+mode_ac=$(echo $json | jq -r '.mode_ac')
+points=$(echo $json | jq -r '.points')
 
 sudo iw reg set $country_code
 

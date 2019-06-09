@@ -8,9 +8,9 @@ source ./tools/walk.conf
 source ./tools/bar.sh
 
 config=$(jq '.' ./config/config.json)
-network=$(jq ". | $walkconfig walkconfig($config)" ./config/network.json)
+json=$(jq ". | $walkconfig walkconfig($config)" ./config/network.json)
 hostname_old=$(cat /etc/hostname)
-hostname_new=$(echo $network | jq -r '.hostname')
+hostname_new=$(echo $json | jq -r '.hostname')
 t3="   "
 t7="$t3 $t3"
 t11="$t3 $t7"
@@ -32,11 +32,11 @@ if [[ $distro == bionic ]]; then
 
     sudo printf "network:\n$t3 version: 2\n$t3 ethernets:\n" > $fnetplan
 
-    length=$(echo $network | jq '.interfaces | length')
+    length=$(echo $json | jq '.interfaces | length')
 
     for ((i=0; i<${length}; ++i));
     do
-        interface=$(echo $network | jq ".interfaces[$i]")
+        interface=$(echo $json | jq ".interfaces[$i]")
         name=$(echo $interface | jq -r '.name')
         inet=$(echo $interface | jq -r '.inet')
         address=$(echo $interface | jq -r '.address')
@@ -79,11 +79,11 @@ else
         sudo rm -r $finterfaces
     fi
 
-    length=$(echo $network | jq '.interfaces | length')
+    length=$(echo $json | jq '.interfaces | length')
 
     for ((i=0; i<${length}; ++i));
     do
-        interface=$(echo $network | jq ".interfaces[$i]")
+        interface=$(echo $json | jq ".interfaces[$i]")
         name=$(echo $interface | jq -r '.name')
         inet=$(echo $interface | jq -r '.inet')
 
