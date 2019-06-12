@@ -5,9 +5,10 @@ sudo ./utils/update.sh
 sudo apt install -y nginx
 
 nginx_root=/etc/nginx
+date_now=$(date +%F_%H-%M-%S)
 
 nginx_conf=$nginx_root/nginx.conf
-nginx_conf_old=$nginx_root/nginx.conf.old
+nginx_conf_old=$nginx_root/nginx.conf.$date_now
 
 sites_available=$nginx_root/sites-available
 sites_enabled=$nginx_root/sites-enabled
@@ -16,8 +17,8 @@ if [[ -f $nginx_conf ]]; then
     sudo cp $nginx_conf $nginx_conf_old
 fi
 
-sudo cp -R ./tools/nginx/* $nginx_root
-source ./tools/walk.conf
+sudo cp -R ./utils/nginx/* $nginx_root
+source ./utils/walk.conf
 
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/http.json)
@@ -50,6 +51,10 @@ do
 
     server_block=$sites_available/$server_name.conf
 
+    if [[ -f $server_block ]]; then
+        sudo cp $server_block $server_block.conf.$date_now
+    fi
+
     sudo cp $nginx_root/templates/$app.conf $server_block
 
     sed -i "s/example.com/$server_name/g" $server_block
@@ -79,6 +84,9 @@ do
             git reset -q --hard HEAD
             git pull -q
         else
+            if [[ "$(ls -A $web_root)" ]]; then
+                sudo rm -r $web_root/*
+            fi
             git clone -q $origin_git $web_root
         fi
     elif [[ $origin_zip != null && $origin_zip != "" && -f $origin_zip ]]; then

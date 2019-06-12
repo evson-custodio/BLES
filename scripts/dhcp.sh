@@ -4,11 +4,13 @@ sudo ./utils/update.sh
 
 sudo apt install -y isc-dhcp-server
 
+date_now=$(date +%F_%H-%M-%S)
+
 fdhcp=/etc/dhcp/dhcpd.conf
 fdefault=/etc/default/isc-dhcp-server
 
-fdhcp_old=/etc/dhcp/dhcpd.conf.old
-fdefault_old=/etc/default/isc-dhcp-server.old
+fdhcp_old=/etc/dhcp/dhcpd.conf.$date_now
+fdefault_old=/etc/default/isc-dhcp-server.$date_now
 
 if [[ -f $fdhcpd ]]; then
     sudo cp $fdhcpd $fdhcpd_old
@@ -18,7 +20,7 @@ if [[ -f $fdefault ]]; then
     sudo cp $fdefault $fdefault_old
 fi
 
-source ./tools/walk.conf
+source ./utils/walk.conf
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/dhcp.json)
 
@@ -47,7 +49,7 @@ writePaths() {
         domain_name_servers)
         [[ $value != null ]] && sudo printf "$tn option domain-name-servers $(echo $value | sed 's/ /, /g');\n" >> $fdhcpd
         ;;
-        deny_hosts)
+        deny_other_hosts)
         [[ $value == true ]] && sudo printf "$tn deny unknown-clients;\n" >> $fdhcpd
         ;;
         lease_time)

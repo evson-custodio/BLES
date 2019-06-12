@@ -4,11 +4,13 @@ sudo ./utils/update.sh
 
 sudo apt install -y iw hostapd
 
+date_now=$(date +%F_%H-%M-%S)
+
 hostapd_conf=/etc/hostapd/hostapd.conf
 hostapd_default=/etc/default/hostapd
 
-hostapd_conf_old=/etc/hostapd/hostapd.conf.old
-hostapd_default_old=/etc/default/hostapd.old
+hostapd_conf_old=/etc/hostapd/hostapd.conf.$date_now
+hostapd_default_old=/etc/default/hostapd.$date_now
 
 if [[ -f $hostapd_conf ]]; then
     sudo cp $hostapd_conf $hostapd_conf_old
@@ -18,7 +20,7 @@ if [[ -f $hostapd_default ]]; then
     sudo cp $hostapd_default $hostapd_default_old
 fi
 
-source ./tools/walk.conf
+source ./utils/walk.conf
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/access_point.json)
 

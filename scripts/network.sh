@@ -4,8 +4,10 @@ sudo ./utils/update.sh
 
 sudo apt install -y lsb-release
 
-source ./tools/walk.conf
-source ./tools/bar.sh
+date_now=$(date +%F_%H-%M-%S)
+
+source ./utils/walk.conf
+source ./utils/bar.sh
 
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/network.json)
@@ -14,6 +16,9 @@ hostname_new=$(echo $json | jq -r '.hostname')
 t3="   "
 t7="$t3 $t3"
 t11="$t3 $t7"
+
+sudo cp /etc/hostname /etc/hostname.$date_now
+sudo cp /etc/hosts /etc/hosts.$date_now
 
 sudo hostname $hostname_new
 sudo sed -i "s/$hostname_old/$hostname_new/g" /etc/hostname
@@ -24,7 +29,7 @@ distro=$(lsb_release -s -c)
 
 if [[ $distro == bionic ]]; then
     fnetplan=/etc/netplan/50-cloud-init.yaml
-    fnetplan_old=/etc/netplan/50-cloud-init.yaml.old
+    fnetplan_old=/etc/netplan/50-cloud-init.yaml.$date_now
 
     if [[ -f $fnetplan ]]; then
         sudo cp $fnetplan $fnetplan_old
@@ -72,7 +77,7 @@ if [[ $distro == bionic ]]; then
     sudo netplan apply
 else
     finterfaces=/etc/network/interfaces
-    finterfaces_old=/etc/network/interfaces.old
+    finterfaces_old=/etc/network/interfaces.$date_now
 
     if [[ -f $finterfaces ]]; then
         sudo mv $finterfaces $finterfaces_old
@@ -111,5 +116,3 @@ else
 
     sudo service networking reload
 fi
-
-sudo ./utils/enable_forward.sh

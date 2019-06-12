@@ -5,12 +5,13 @@ sudo ./utils/update.sh
 sudo apt install -y bind9 bind9utils bind9-doc dnsutils
 
 base=/etc/bind
+date_now=$(date +%F_%H-%M-%S)
 
 named_options=$base/named.conf.options
 named_local=$base/named.conf.local
 
-named_options_old=$base/named.conf.options.old
-named_local_old=$base/named.conf.local.old
+named_options_old=$base/named.conf.options.$date_now
+named_local_old=$base/named.conf.local.$date_now
 
 if [[ -f $named_options ]]; then
     sudo cp $named_options $named_options_old
@@ -20,8 +21,8 @@ if [[ -f $named_local ]]; then
     sudo mv $named_local $named_local_old
 fi
 
-source ./tools/walk.conf
-source ./tools/bar.sh
+source ./utils/walk.conf
+source ./utils/bar.sh
 
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/dns.json)
@@ -67,6 +68,14 @@ do
 
     db=$base/db.$domain_name
     rev=$base/rev.$domain_name
+
+    if [[ -f $db ]]; then
+        sudo cp $db $db.$date_now
+    fi
+
+    if [[ -f $rev ]]; then
+        sudo cp $rev $rev.$date_now
+    fi
 
     rev_zone=$f1.in-addr.arpa
     [[ $bar > 15 ]] && rev_zone=$f2.$rev_zone
