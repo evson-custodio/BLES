@@ -1,0 +1,29 @@
+{
+    "hostname": "proxy.bles",
+    "blocked_sites": [
+        "www.facebook.com",
+        ".ahnegao."
+    ],
+    "blocked_words": [
+        "porn",
+        "xxx"
+    ],
+    "auth": {
+        "enabled": "true",
+        "message": "Proxy Server: Digite suas credenciais",
+        "credential_ttl": "2",
+        "users": [
+            {
+                "username": "evsoncustodio",
+                "password": "custodio"
+            }
+        ]
+    },
+    "subnets": [
+        {
+            "deny": "false",
+            "network": "192.168.1.0",
+            "netmask": "255.255.255.0"
+        }
+    ]
+}
