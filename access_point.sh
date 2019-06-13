@@ -20,7 +20,7 @@ if [[ -f $hostapd_default ]]; then
     sudo cp $hostapd_default $hostapd_default_old
 fi
 
-source ./utils/walk.conf
+source ./utils/polyfills/walk.conf
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/access_point.json)
 

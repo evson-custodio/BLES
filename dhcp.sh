@@ -20,7 +20,7 @@ if [[ -f $fdefault ]]; then
     sudo cp $fdefault $fdefault_old
 fi
 
-source ./utils/walk.conf
+source ./utils/polyfills/walk.conf
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/dhcp.json)
 

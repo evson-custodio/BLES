@@ -25,7 +25,7 @@ fi
 
 sudo cp ./utils/squid/squid.conf $squid_conf
 
-source ./utils/walk.conf
+source ./utils/polyfills/walk.conf
 source ./utils/bar.sh
 
 config=$(jq '.' ./config/config.json)

@@ -4,7 +4,7 @@ netmaskBar()
 {
     bar=""
 
-    for ((i=1;i<5;++i));
+    for ((i=1; i<5; ++i));
     do
         bar=$bar$(echo "obase=2;$(echo $netmask | cut -f$i -d.)" | bc)
     done

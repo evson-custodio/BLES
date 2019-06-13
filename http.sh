@@ -2,7 +2,7 @@
 
 sudo ./utils/update.sh
 
-sudo apt install -y nginx
+sudo apt install -y nginx unzip
 
 nginx_root=/etc/nginx
 date_now=$(date +%F_%H-%M-%S)
@@ -18,7 +18,7 @@ if [[ -f $nginx_conf ]]; then
 fi
 
 sudo cp -R ./utils/nginx/* $nginx_root
-source ./utils/walk.conf
+source ./utils/polyfills/walk.conf
 
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/http.json)

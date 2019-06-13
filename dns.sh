@@ -21,7 +21,7 @@ if [[ -f $named_local ]]; then
     sudo mv $named_local $named_local_old
 fi
 
-source ./utils/walk.conf
+source ./utils/polyfills/walk.conf
 source ./utils/bar.sh
 
 config=$(jq '.' ./config/config.json)
