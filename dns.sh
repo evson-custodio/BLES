@@ -22,7 +22,7 @@ if [[ -f $named_local ]]; then
 fi
 
 source ./utils/polyfills/walk.conf
-source ./utils/bar.sh
+source ./utils/libs/bar.sh
 
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/dns.json)

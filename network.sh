@@ -7,7 +7,7 @@ sudo apt install -y lsb-release
 date_now=$(date +%F_%H-%M-%S)
 
 source ./utils/polyfills/walk.conf
-source ./utils/bar.sh
+source ./utils/libs/bar.sh
 
 config=$(jq '.' ./config/config.json)
 json=$(jq ". | $walkconfig walkconfig($config)" ./config/network.json)
