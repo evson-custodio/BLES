@@ -1,0 +1,49 @@
+{
+    "enabled": "true",
+    "basic_security": "true",
+    "ping_limit_seconds": "1",
+    "allow_ports": [
+        {
+            "port": "22",
+            "input_interface": "wlan0",
+            "address": "192.168.0.0",
+            "netmask": "255.255.255.0",
+            "protocol": "tcp"
+        }
+    ],
+    "masquerade": [
+        {
+            "output_interface": "eth0",
+            "address": "192.168.0.0",
+            "netmask": "255.255.255.0"
+        }
+    ],
+    "redirect_ports": [
+        {
+            "port": "80",
+            "to_port": "3128",
+            "input_interface": "wlan0",
+            "address": "192.168.0.0",
+            "netmask": "255.255.255.0",
+            "protocol": "tcp"
+        }
+    ],
+    "redirect_destination": [
+        {
+            "input_interface": "wlan0",
+            "protocol": "tcp",
+            "source": {
+                "address": "192.168.0.0",
+                "netmask": "255.255.255.0",
+                "port": "80"
+            },
+            "destination": {
+                "address": "192.168.0.1",
+                "netmask": "255.255.255.0",
+                "port": "3128",
+                "to_address": "192.168.0.1-192.168.0.5",
+                "to_port": "3128"
+            }
+        }
+    ]
+}
