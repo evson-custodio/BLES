@@ -42,12 +42,14 @@ do
     origin_zip=$(echo $origin | jq -r '.zip')
     origin_paste=$(echo $origin | jq -r '.paste')
 
-    [[ $document_root == null || $document_root == "/" ]] && document_root=""
-    [[ $path == null || $path == "" ]] && path=/
+    [[ $document_root == null || $document_root == "" || $document_root == "/" ]] && document_root=""
+    document_root=$(echo $document_root | sed 's/\//\\\//g')
+
+    [[ $path == null || $path == "" ]] && path="/"
+    path=$(echo $path | sed 's/\//\\\//g')
+
     [[ $address == null || $address == "" ]] && address=127.0.0.1
     [[ $port == null || $port == "" ]] && port=3000
-
-    [[ $app == frontend && reverse_proxy != null ]] && app=frontend_proxy
 
     server_block=$sites_available/$server_name.conf
 
@@ -57,11 +59,22 @@ do
 
     sudo cp $nginx_root/templates/$app.conf $server_block
 
+    if [[ $app == frontend ]]; then
+        if [[ $reverse_proxy != null ]]; then
+            reverse_proxy_template="\n\t# reverse proxy\n\tlocation <path> {\n\t\tproxy_pass http:\/\/<address>:<port>;\n\t\tinclude nginxconfig.io\/proxy.conf;\n\t}"
+            sed -i "s/<reverse_proxy>/$reverse_proxy_template/g" $server_block
+
+            [[ $path == "\/" ]] && path="\/api"
+        else
+            sed -i '/<reverse_proxy>/d' $server_block
+        fi
+    fi
+
     sed -i "s/example.com/$server_name/g" $server_block
-    sed -i "s/\/public/\\$document_root/g" $server_block
-    sed -i "s/path/\\$path/g" $server_block
-    sed -i "s/address/$address/g" $server_block
-    sed -i "s/port/$port/g" $server_block
+    sed -i "s/<document_root>/$document_root/g" $server_block
+    sed -i "s/<path>/$path/g" $server_block
+    sed -i "s/<address>/$address/g" $server_block
+    sed -i "s/<port>/$port/g" $server_block
 
     if [[ $enabled == false ]]; then
         if [[ -L $sites_enabled/$server_name.conf ]]; then
@@ -81,8 +94,11 @@ do
 
     if [[ $origin_git != null && $origin_git != "" ]]; then
         if [[ -d $web_root/.git ]]; then
+            workspace=$PWD
+            cd $web_root
             git reset -q --hard HEAD
             git pull -q
+            cd $workspace
         else
             if [[ "$(ls -A $web_root)" ]]; then
                 sudo rm -r $web_root/*
