@@ -14,12 +14,14 @@ setForward()
 
 clean()
 {
+    local table=""
+
     for arg in "$@"
     do
         value=$(echo $arg | cut -f2 -d=)
         case $arg in
         -t=*|--table=*)
-        local table=" -t $value"
+        table=" -t $value"
         ;;
         *)
         echo "INVALID ARGUMENT ($arg) IN $0"
@@ -76,7 +78,7 @@ antiDDoSAndPingOfDeath()
         value=$(echo $arg | cut -f2 -d=)
         case $arg in
         -sec=*|--seconds=*)
-        local sec="$value"
+        sec="$value"
         ;;
         *)
         echo "INVALID ARGUMENT ($arg) IN $0"
@@ -91,21 +93,26 @@ antiDDoSAndPingOfDeath()
 
 allowPort()
 {
+    local dport=""
+    local i=""
+    local p=""
+    local s=""
+
     for arg in "$@"
     do
         value=$(echo $arg | cut -f2 -d=)
         case $arg in
         -dport=*|--dport=*)
-        local dport=" --dport $value"
+        dport=" --dport $value"
         ;;
         -i=*|--in=*)
-        local i=" -i $value"
+        i=" -i $value"
         ;;
         -p=*|--protocol=*)
-        local p=" -p $value"
+        p=" -p $value"
         ;;
         -s=*|--source=*)
-        local s=" -s $value"
+        s=" -s $value"
         ;;
         *)
         echo "INVALID ARGUMENT ($arg) IN $0"
@@ -121,15 +128,18 @@ allowPort()
 
 masquerade()
 {
+    local o=""
+    local s=""
+
     for arg in "$@"
     do
         value=$(echo $arg | cut -f2 -d=)
         case $arg in
         -o=*|--out=*)
-        local o=" -o $value"
+        o=" -o $value"
         ;;
         -s=*|--source=*)
-        local s=" -s $value"
+        s=" -s $value"
         ;;
         *)
         echo "INVALID ARGUMENT ($arg) IN $0"
@@ -145,24 +155,30 @@ masquerade()
 
 redirectPort()
 {
+    local dport=""
+    local toport=""
+    local i=""
+    local p=""
+    local s=""
+
     for arg in "$@"
     do
         value=$(echo $arg | cut -f2 -d=)
         case $arg in
         -dport=*|--dport=*)
-        local dport=" --dport $value"
+        dport=" --dport $value"
         ;;
         -toport=*|--to-port=*)
-        local toport=" --to-port $value"
+        toport=" --to-port $value"
         ;;
         -i=*|--in=*)
-        local i=" -i $value"
+        i=" -i $value"
         ;;
         -p=*|--protocol=*)
-        local p=" -p $value"
+        p=" -p $value"
         ;;
         -s=*|--source=*)
-        local s=" -s $value"
+        s=" -s $value"
         ;;
         *)
         echo "INVALID ARGUMENT ($arg) IN $0"
@@ -178,27 +194,34 @@ redirectPort()
 
 redirectDNAT()
 {
+    local dport=""
+    local i=""
+    local p=""
+    local s=""
+    local d=""
+    local to=""
+
     for arg in "$@"
     do
         value=$(echo $arg | cut -f2 -d=)
         case $arg in
         -dport=*|--dport=*)
-        local dport=" --dport $value"
+        dport=" --dport $value"
         ;;
         -i=*|--in=*)
-        local i=" -i $value"
+        i=" -i $value"
         ;;
         -p=*|--protocol=*)
-        local p=" -p $value"
+        p=" -p $value"
         ;;
         -s=*|--source=*)
-        local s=" -s $value"
+        s=" -s $value"
         ;;
         -d=*|--destination=*)
-        local d=" -d $value"
+        d=" -d $value"
         ;;
         -to=*|--to=*)
-        local to=" --to $value"
+        to=" --to $value"
         ;;
         *)
         echo "INVALID ARGUMENT ($arg) IN $0"
