@@ -1,0 +1,26 @@
+{
+    "hostname": "bles",
+    "interfaces": [
+        {
+            "name": "lo",
+            "inet": "loopback"
+        },
+        {
+            "name": "eth0",
+            "inet": "dhcp"
+        },
+        {
+            "name": "wlan0",
+            "inet": "static",
+            "network": "bles_network",
+            "address": "bles_address",
+            "netmask": "bles_netmask",
+            "broadcast": "bles_broadcast",
+            "gateway": "ip_router",
+            "domain_name": "bles",
+            "domain_name_servers": [
+                "10.0.0.1"
+            ]
+        }
+    ]
+}

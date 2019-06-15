@@ -1,0 +1,30 @@
+{
+    "hostname": "proxy.bles",
+    "blocked_sites": [
+        "www.facebook.com",
+        ".tinder."
+    ],
+    "blocked_words": [
+        "porn",
+        "xxx",
+        "gore"
+    ],
+    "auth": {
+        "enabled": "false",
+        "message": "Proxy Server: Enter your credentials",
+        "credential_ttl": "2",
+        "users": [
+            {
+                "username": "userexample",
+                "password": "passwordexample"
+            }
+        ]
+    },
+    "subnets": [
+        {
+            "deny": "false",
+            "network": "bles_network",
+            "netmask": "bles_netmask"
+        }
+    ]
+}

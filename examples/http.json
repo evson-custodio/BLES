@@ -1,0 +1,29 @@
+{
+    "servers": [
+        {
+            "enabled": "true",
+            "type": "frontend",
+            "server_name": "home.bles",
+            "document_root": "/",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/BLES-Frontend",
+                "zip": "/home/ubuntu/BLES-Frontend.zip",
+                "paste": "/home/ubuntu/BLES-Frontend/"
+            }
+        },
+        {
+            "enabled": "true",
+            "type": "node",
+            "server_name": "api.bles",
+            "document_root": "/",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/BLES-API"
+            },
+            "reverse_proxy": {
+                "path": "/api",
+                "address": "127.0.0.1",
+                "port": "3000"
+            }
+        }
+    ]
+}

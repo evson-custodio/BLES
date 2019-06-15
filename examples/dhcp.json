@@ -1,0 +1,49 @@
+{
+    "interface": "wlan0",
+    "subnets": [
+        {
+            "network": "bles_network",
+            "netmask": "bles_netmask",
+            "gateway": "bles_address",
+            "broadcast": "bles_broadcast",
+            "pools": [
+                {
+                    "start_range": "10.1.0.1",
+                    "end_range": "10.2.0.0",
+                    "lease_time": "43200",
+                    "deny_other_hosts": "false",
+                    "domain_name": "bles",
+                    "domain_name_servers": [
+                        "10.0.0.1"
+                    ],
+                    "hosts": [
+                        {
+                            "hostname": "example",
+                            "mac": "01:02:03:04:05:06",
+                            "address": "10.0.0.2",
+                            "assign_hostname": "false"
+                        }
+                    ]
+                },
+                {
+                    "start_range": "10.2.0.1",
+                    "end_range": "10.3.0.0",
+                    "lease_time": "43200",
+                    "deny_other_hosts": "true",
+                    "domain_name": "bles",
+                    "domain_name_servers": [
+                        "10.0.0.1"
+                    ],
+                    "hosts": [
+                        {
+                            "hostname": "onlyconnected",
+                            "mac": "01:02:03:04:05:06",
+                            "address": "10.0.0.3",
+                            "assign_hostname": "false"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
