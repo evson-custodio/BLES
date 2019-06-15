@@ -2,5 +2,6 @@
     "bles_network": "10.0.0.0",
     "bles_address": "10.0.0.1",
     "bles_netmask": "255.0.0.0",
-    "bles_broadcast": "10.255.255.255"
+    "bles_broadcast": "10.255.255.255",
+    "bles_gateway": "null"
 }

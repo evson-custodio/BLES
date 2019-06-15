@@ -16,7 +16,7 @@
             "address": "bles_address",
             "netmask": "bles_netmask",
             "broadcast": "bles_broadcast",
-            "gateway": null,
+            "gateway": "bles_gateway",
             "domain_name": "bles",
             "domain_name_servers": [
                 "10.0.0.1"
