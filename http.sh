@@ -2,7 +2,7 @@
 
 sudo ./utils/update.sh
 
-sudo apt install -y nginx unzip
+sudo apt install -y nginx unzip jq
 
 nginx_root=/etc/nginx
 date_now=$(date +%F_%H-%M-%S)

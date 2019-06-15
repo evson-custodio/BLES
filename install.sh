@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sudo ./utils/update.sh
+
+sudo apt install -y jq
+
 date_now=$(date +%F_%H-%M-%S)
 
 source ./utils/polyfills/walk.conf

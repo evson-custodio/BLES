@@ -2,7 +2,7 @@
 
 sudo ./utils/update.sh
 
-sudo apt install -y lsb-release
+sudo apt install -y lsb-release jq
 
 date_now=$(date +%F_%H-%M-%S)
 

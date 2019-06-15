@@ -2,7 +2,7 @@
 
 sudo ./utils/update.sh
 
-sudo apt install -y squid3 apache2-utils
+sudo apt install -y squid3 apache2-utils jq
 
 base=/etc/squid
 date_now=$(date +%F_%H-%M-%S)

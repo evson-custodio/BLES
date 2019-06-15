@@ -2,7 +2,7 @@
 
 sudo ./utils/update.sh
 
-sudo apt install -y iw hostapd
+sudo apt install -y iw hostapd jq
 
 date_now=$(date +%F_%H-%M-%S)
 

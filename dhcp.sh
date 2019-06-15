@@ -2,7 +2,7 @@
 
 sudo ./utils/update.sh
 
-sudo apt install -y isc-dhcp-server
+sudo apt install -y isc-dhcp-server jq
 
 date_now=$(date +%F_%H-%M-%S)
 

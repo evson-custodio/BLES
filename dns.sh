@@ -2,7 +2,7 @@
 
 sudo ./utils/update.sh
 
-sudo apt install -y bind9 bind9utils bind9-doc dnsutils
+sudo apt install -y bind9 bind9utils bind9-doc dnsutils jq
 
 base=/etc/bind
 date_now=$(date +%F_%H-%M-%S)
