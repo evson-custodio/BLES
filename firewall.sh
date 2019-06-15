@@ -9,7 +9,7 @@ date_now=$(date +%F_%H-%M-%S)
 # Enable /etc/rc.local
 sudo ./utils/enable_rc.local.sh
 
-rc_local=./test/rc.local
+rc_local=/etc/rc.local
 header="#!\/bin\/bash"
 restore="iptables-restore < \/etc\/iptables.ipv4.nat"
 get_restore=$(grep -i "$restore" $rc_local)

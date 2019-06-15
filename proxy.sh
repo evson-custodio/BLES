@@ -74,6 +74,7 @@ if [[ $auth_enabled == true ]]; then
 
     sed -i "s/<auth>/$auth_output/g" $squid_conf
     sed -i "s/<auth_users>/acl auth_users proxy_auth REQUIRED/g" $squid_conf
+    sed -i "s/<auth_rule>/http_access allow auth_users/g" $squid_conf
 
     usersLength=$(echo $auth | jq -r '.users | length')
 
@@ -93,6 +94,7 @@ else
     sed -i "s/<intercept>/ intercept/g" $squid_conf
     sed -i "s/<auth>//g" $squid_conf
     sed -i "s/<auth_users>//g" $squid_conf
+    sed -i "s/<auth_rule>//g" $squid_conf
 fi
 
 subnets_acl=""

@@ -87,7 +87,7 @@ do
     ssid=$(echo $points | jq -r ".[$i].ssid")
     password=$(echo $points | jq -r ".[$i].password")
 
-    [[ i != 0 ]] && sudo printf "\nbss=$interface\n" >> $hostapd_conf
+    [[ $i != 0 ]] && sudo printf "\nbss=$interface\n" >> $hostapd_conf
     sudo printf "ssid=$ssid\n" >> $hostapd_conf
     [[ $password != null ]] && sudo printf "auth_algs=1\nwpa=2\nwpa_key_mgmt=WPA-PSK\nwpa_passphrase=$password\nwpa_pairwise=TKIP\nrsn_pairwise=CCMP\n" >> $hostapd_conf
 done

@@ -78,8 +78,8 @@ do
     fi
 
     rev_zone=$f1.in-addr.arpa
-    [[ $bar > 15 ]] && rev_zone=$f2.$rev_zone
-    [[ $bar > 23 ]] && rev_zone=$f3.$rev_zone
+    [[ $bar -gt 15 ]] && rev_zone=$f2.$rev_zone
+    [[ $bar -gt 23 ]] && rev_zone=$f3.$rev_zone
 
     sudo printf "\nzone \"$domain_name\" {\n\ttype master;\n\tfile \"$db\";\n};\n\nzone \"$rev_zone\" {\n\ttype master;\n\tfile \"$rev\";\n};\n" >> $named_local
 
@@ -99,8 +99,8 @@ do
         f4=$(echo $address | cut -f4 -d.)
 
         rev_address=$f4
-        [[ $bar < 24 ]] && rev_address=$f3.$rev_address
-        [[ $bar < 16 ]] && rev_address=$f2.$rev_address
+        [[ $bar -lt 24 ]] && rev_address=$f3.$rev_address
+        [[ $bar -lt 16 ]] && rev_address=$f2.$rev_address
 
         sudo printf "$rev_address\tIN\tPTR\t$hostname.\n" >> $rev
         sudo printf "$hostname\tIN\tA\t$address\n" >> $db

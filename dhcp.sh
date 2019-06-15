@@ -6,10 +6,10 @@ sudo apt install -y isc-dhcp-server jq
 
 date_now=$(date +%F_%H-%M-%S)
 
-fdhcp=/etc/dhcp/dhcpd.conf
+fdhcpd=/etc/dhcp/dhcpd.conf
 fdefault=/etc/default/isc-dhcp-server
 
-fdhcp_old=/etc/dhcp/dhcpd.conf.$date_now
+fdhcpd_old=/etc/dhcp/dhcpd.conf.$date_now
 fdefault_old=/etc/default/isc-dhcp-server.$date_now
 
 if [[ -f $fdhcpd ]]; then

@@ -42,7 +42,7 @@ do
     origin_zip=$(echo $origin | jq -r '.zip')
     origin_paste=$(echo $origin | jq -r '.paste')
 
-    [[ $document_root == null ]] && document_root=/
+    [[ $document_root == null || $document_root == "/" ]] && document_root=""
     [[ $path == null || $path == "" ]] && path=/
     [[ $address == null || $address == "" ]] && address=127.0.0.1
     [[ $port == null || $port == "" ]] && port=3000
