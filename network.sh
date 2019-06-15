@@ -116,3 +116,5 @@ else
 
     sudo service networking reload
 fi
+
+sudo cp ./config/network.json ./config/network.json.$date_now

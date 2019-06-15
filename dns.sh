@@ -119,4 +119,6 @@ done
 sudo named-checkconf $named_options
 sudo named-checkconf $named_local
 
-sudo service bind9 restart
+sudo cp ./config/dns.json ./config/dns.json.$date_now
+
+sudo systemctl restart bind9

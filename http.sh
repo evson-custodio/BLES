@@ -100,5 +100,7 @@ done
 
 sudo nginx -t
 
+sudo cp ./config/http.json ./config/http.json.$date_now
+
 sudo systemctl enable nginx
-sudo systemctl reload nginx
+sudo systemctl restart nginx

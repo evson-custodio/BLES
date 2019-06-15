@@ -153,6 +153,8 @@ writeSubnets
 
 sudo printf "}\n" >> $fdhcpd
 
+sudo cp ./config/dhcp.json ./config/dhcp.json.$date_now
+
 dhcpd -t
 
-sudo service isc-dhcp-server restart
+sudo systemctl restart isc-dhcp-server

@@ -92,6 +92,8 @@ do
     [[ $password != null ]] && sudo printf "auth_algs=1\nwpa=2\nwpa_key_mgmt=WPA-PSK\nwpa_passphrase=$password\nwpa_pairwise=TKIP\nrsn_pairwise=CCMP\n" >> $hostapd_conf
 done
 
+sudo cp ./config/access_point.json ./config/access_point.json.$date_now
+
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
-sudo service hostapd restart
+sudo systemctl restart hostapd

@@ -116,5 +116,7 @@ done
 sed -i "s/<subnets_acl>/$subnets_acl/g" $squid_conf
 sed -i "s/<subnets_rules>/$subnets_rules/g" $squid_conf
 
+sudo cp ./config/proxy.json ./config/proxy.json.$date_now
+
 sudo squid3 -z
 sudo squid3 -k reconfigure

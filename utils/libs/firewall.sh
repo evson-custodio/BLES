@@ -28,8 +28,8 @@ clean()
     done
 
     # Clean $1 table
-    echo "sudo iptables$table -F"
-    echo "sudo iptables$table -X"
+    sudo iptables$table -F
+    sudo iptables$table -X
 }
 
 cleanAll()
@@ -49,22 +49,22 @@ basicSecurity()
     # Add to filter table
 
     # Drop all INPUT packets (blocks all incoming packets, for packets destined to local sockets)
-    echo "sudo iptables -P INPUT DROP"
+    sudo iptables -P INPUT DROP
 
     # Drop all FORWARD packets (blocks all routeds packets, for packets being routed through the box)
-    echo "sudo iptables -P FORWARD DROP"
+    sudo iptables -P FORWARD DROP
 
     # Accept all OUTPUT packets (frees all outgoing packets, for locally-generated packets)
-    echo "sudo iptables -P OUTPUT ACCEPT"
+    sudo iptables -P OUTPUT ACCEPT
 
     # Add exception for "lo" (loopback) in INPUT
-    echo "sudo iptables -A INPUT -i lo -j ACCEPT"
+    sudo iptables -A INPUT -i lo -j ACCEPT
 
     # Add exception for all interfaces in INPUT, only if the state is ESTABLISHED or RELATED
-    echo "sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT"
+    sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
     # Add exception for all interfaces in FORWARD, only if the state is ESTABLISHED or RELATED
-    echo "sudo iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT"
+    sudo iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 }
 
 antiDDoSAndPingOfDeath()
@@ -85,8 +85,8 @@ antiDDoSAndPingOfDeath()
     done
 
     # Add to filter table
-    echo "sudo iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit $sec/s -j ACCEPT"
-    echo "sudo iptables -A INPUT -p icmp --icmp-type echo-reply -m limit --limit $sec/s -j DROP"
+    sudo iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit $sec/s -j ACCEPT
+    sudo iptables -A INPUT -p icmp --icmp-type echo-reply -m limit --limit $sec/s -j DROP
 }
 
 allowPort()
@@ -116,7 +116,7 @@ allowPort()
     [[ $dport == "" ]] && echo "PARAMETER -dport IS REQUIRED" && return
 
     # Add to filter table
-    echo "sudo iptables -A INPUT$i$s$p$dport -j ACCEPT"
+    sudo iptables -A INPUT$i$s$p$dport -j ACCEPT
 }
 
 masquerade()
@@ -140,7 +140,7 @@ masquerade()
     [[ $o == "" ]] && echo "PARAMETER -o IS REQUIRED" && return
 
     # Add to nat table
-    echo "sudo iptables -t nat -A POSTROUTING$o$s -j MASQUERADE"
+    sudo iptables -t nat -A POSTROUTING$o$s -j MASQUERADE
 }
 
 redirectPort()
@@ -173,7 +173,7 @@ redirectPort()
     [[ $dport == "" || $toport == "" ]] && echo "PARAMETERS -dport and -toport ARE REQUIREDS" && return
 
     # Add to nat table
-    echo "iptables -t nat -A PREROUTING$i$s$p$dport -j REDIRECT$toport"
+    sudo iptables -t nat -A PREROUTING$i$s$p$dport -j REDIRECT$toport
 }
 
 redirectDNAT()
@@ -208,6 +208,6 @@ redirectDNAT()
 
     [[ $to == "" || ($i == "" && $s == "") ]] && echo "PARAMETERS -dport and -to ARE REQUIREDS" && return
 
-    echo "iptables -A FORWARD$i$s$p$dport$d -j ACCEPT"
-    echo "iptables -t nat -A PREROUTING$i$s$p$dport -j DNAT$to"
+    sudo iptables -A FORWARD$i$s$p$dport$d -j ACCEPT
+    sudo iptables -t nat -A PREROUTING$i$s$p$dport -j DNAT$to
 }
