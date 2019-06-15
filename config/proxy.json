@@ -2,28 +2,29 @@
     "hostname": "proxy.bles",
     "blocked_sites": [
         "www.facebook.com",
-        ".ahnegao."
+        ".tinder."
     ],
     "blocked_words": [
         "porn",
-        "xxx"
+        "xxx",
+        "gore"
     ],
     "auth": {
-        "enabled": "true",
-        "message": "Proxy Server: Digite suas credenciais",
+        "enabled": "false",
+        "message": "Proxy Server: Enter your credentials",
         "credential_ttl": "2",
         "users": [
             {
-                "username": "evsoncustodio",
-                "password": "custodio"
+                "username": "userexample",
+                "password": "passwordexample"
             }
         ]
     },
     "subnets": [
         {
             "deny": "false",
-            "network": "192.168.1.0",
-            "netmask": "255.255.255.0"
+            "network": "bles_network",
+            "netmask": "bles_netmask"
         }
     ]
 }

@@ -12,16 +12,14 @@
         {
             "name": "wlan0",
             "inet": "static",
-            "network": "192.168.0.0",
-            "address": "batata",
-            "netmask": "cenoura",
-            "broadcast": "192.168.0.255",
+            "network": "bles_network",
+            "address": "bles_address",
+            "netmask": "bles_netmask",
+            "broadcast": "bles_broadcast",
             "gateway": null,
             "domain_name": "bles",
             "domain_name_servers": [
-                "dns.bles",
-                "8.8.8.8",
-                "8.8.4.4"
+                "10.0.0.1"
             ]
         }
     ]

@@ -1,20 +1,28 @@
 {
     "domain_name_servers": [
-        "dns.bles",
+        "1.1.1.1",
+        "1.0.0.1",
         "8.8.8.8",
-        "8.8.4.4"
+        "8.8.4.4",
+        "208.67.222.222",
+        "208.67.220.220"
     ],
     "zones": [
         {
-            "network": "192.168.0.0",
-            "netmask": "255.255.255.0",
+            "network": "bles_network",
+            "netmask": "bles_netmask",
             "domain_name": "bles",
             "hosts": [
                 {
                     "hostname": "dns",
-                    "address": "192.168.0.1",
+                    "address": "bles_address",
                     "aliases": [
-                        "bles", "home"
+                        "bles",
+                        "home",
+                        "dhcp",
+                        "proxy",
+                        "http",
+                        "www"
                     ]
                 }
             ]

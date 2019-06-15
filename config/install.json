@@ -1,0 +1,9 @@
+{
+    "network": true,
+    "access_point": true,
+    "dhcp": true,
+    "dns": true,
+    "http": true,
+    "proxy": false,
+    "firewall": false
+}

@@ -1,4 +1,6 @@
 {
-    "batata": "192.168.0.1",
-    "cenoura": "255.255.255.0"
+    "bles_network": "10.0.0.0",
+    "bles_address": "10.0.0.1",
+    "bles_netmask": "255.0.0.0",
+    "bles_broadcast": "10.255.255.255"
 }
