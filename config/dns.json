@@ -14,16 +14,23 @@
             "domain_name": "bles",
             "hosts": [
                 {
-                    "hostname": "dns",
+                    "hostname": "server",
                     "address": "bles_address",
                     "aliases": [
-                        "bles",
-                        "home",
+                        "dns",
                         "dhcp",
                         "proxy",
                         "http",
-                        "www"
+                        "www",
+                        "home",
+                        "chat",
+                        "maze",
+                        "pyraminx"
                     ]
+                },
+                {
+                    "hostname": "mongo",
+                    "address": "mongo_address"
                 }
             ]
         }

@@ -1,7 +1,8 @@
 {
-    "bles_network": "10.0.0.0",
-    "bles_address": "10.0.0.1",
-    "bles_netmask": "255.0.0.0",
-    "bles_broadcast": "10.255.255.255",
-    "bles_gateway": "null"
+    "bles_network": "192.168.7.0",
+    "bles_address": "192.168.7.1",
+    "bles_netmask": "255.255.255.0",
+    "bles_broadcast": "192.168.7.255",
+    "bles_gateway": "null",
+    "mongo_address": "192.168.7.2"
 }

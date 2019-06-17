@@ -19,7 +19,7 @@
             "gateway": "bles_gateway",
             "domain_name": "bles",
             "domain_name_servers": [
-                "10.0.0.1"
+                "192.168.7.1"
             ]
         }
     ]

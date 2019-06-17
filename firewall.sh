@@ -27,6 +27,8 @@ ping_limit_seconds=$(echo $json | jq -r '.ping_limit_seconds')
 if [[ $enabled == true ]]; then
     setForward 1
     cleanAll
+    reset
+
     [[ $basic_security == true ]] && basicSecurity
     [[ $ping_limit_seconds != null ]] && antiDDoSAndPingOfDeath -sec=$ping_limit_seconds
 
@@ -158,6 +160,7 @@ if [[ $enabled == true ]]; then
 else
     setForward 0
     cleanAll
+    reset
 
     if [[ $get_restore != "" ]]; then
         # Remove restore iptables rule in initialization

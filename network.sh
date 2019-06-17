@@ -25,7 +25,7 @@ sudo sed -i "s/$hostname_old/$hostname_new/g" /etc/hostname
 
 line=$(grep -i "127.0.1.1" /etc/hosts)
 [[ $line == "" ]] && line="\n" || line=""
-sudo sed -i "2,2s/^.*$/127.0.1.1\t$hostname_new$line/" /etc/hosts
+sudo sed -i "2,2s/^.*$/127.0.1.1 $hostname_new$line/" /etc/hosts
 
 # System Distribution (bionic, xenial, stretch, jessie...)
 distro=$(lsb_release -s -c)

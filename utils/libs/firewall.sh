@@ -46,6 +46,13 @@ cleanAll()
     clean -t=mangle
 }
 
+reset()
+{
+    sudo iptables -P INPUT ACCEPT
+    sudo iptables -P FORWARD ACCEPT
+    sudo iptables -P OUTPUT ACCEPT
+}
+
 basicSecurity()
 {
     # Add to filter table

@@ -4,6 +4,6 @@
     "dhcp": true,
     "dns": true,
     "http": true,
-    "proxy": false,
-    "firewall": false
+    "proxy": true,
+    "firewall": true
 }

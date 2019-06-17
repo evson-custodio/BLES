@@ -120,5 +120,6 @@ sed -i "s/<subnets_rules>/$subnets_rules/g" $squid_conf
 
 sudo cp ./config/proxy.json ./config/proxy.json.$date_now
 
-sudo squid3 -z
-sudo squid3 -k reconfigure
+sudo squid -k reconfigure
+sudo squid -z
+sudo service squid restart

@@ -1,8 +1,8 @@
 {
     "hostname": "proxy.bles",
     "blocked_sites": [
-        "www.facebook.com",
-        ".tinder."
+        ".facebook.",
+        "www.youtube.com"
     ],
     "blocked_words": [
         "porn",

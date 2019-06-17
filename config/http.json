@@ -8,6 +8,33 @@
             "origin": {
                 "git": "https://github.com/evsoncustodio/BLES-Frontend"
             }
+        },
+        {
+            "enabled": "true",
+            "type": "frontend",
+            "server_name": "chat.bles",
+            "document_root": "/",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/BLES-Chat"
+            }
+        },
+        {
+            "enabled": "true",
+            "type": "frontend",
+            "server_name": "maze.bles",
+            "document_root": "/public",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/maze"
+            }
+        },
+        {
+            "enabled": "true",
+            "type": "frontend",
+            "server_name": "pyraminx.bles",
+            "document_root": "/",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/basic-pyraminx"
+            }
         }
     ]
 }

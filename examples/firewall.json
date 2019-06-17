@@ -10,13 +10,29 @@
         {
             "port": "3128",
             "protocol": "tcp",
-            "input_interface": "wlan0",
-            "address": "bles_network",
-            "netmask": "bles_netmask"
+            "input_interface": "wlan0"
         },
         {
             "port": "80",
             "protocol": "tcp",
+            "input_interface": "wlan0"
+
+        },
+        {
+            "port": "443",
+            "protocol": "tcp",
+            "input_interface": "wlan0"
+
+        },
+        {
+            "port": "53",
+            "protocol": "tcp",
+            "input_interface": "wlan0"
+
+        },
+        {
+            "port": "53",
+            "protocol": "udp",
             "input_interface": "wlan0"
 
         },
@@ -33,9 +49,7 @@
     ],
     "masquerade": [
         {
-            "output_interface": "eth0",
-            "address": "bles_network",
-            "netmask": "bles_netmask"
+            "output_interface": "eth0"
         }
     ],
     "redirect_ports": [
@@ -43,8 +57,6 @@
             "port": "80",
             "to_port": "3128",
             "input_interface": "wlan0",
-            "address": "bles_network",
-            "netmask": "bles_netmask",
             "protocol": "tcp"
         }
     ],

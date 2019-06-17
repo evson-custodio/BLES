@@ -8,14 +8,22 @@
             "broadcast": "bles_broadcast",
             "pools": [
                 {
-                    "start_range": "10.1.0.0",
-                    "end_range": "10.2.0.0",
+                    "start_range": "192.168.7.10",
+                    "end_range": "192.168.7.254",
                     "lease_time": "43200",
                     "deny_other_hosts": "false",
                     "domain_name": "bles",
                     "domain_name_servers": [
-                        "10.0.0.1"
+                        "192.168.7.1"
                     ]
+                }
+            ],
+            "hosts": [
+                {
+                    "hostname": "mongo",
+                    "mac": "00:db:df:1a:d5:f1",
+                    "address": "mongo_address",
+                    "assign_hostname": "false"
                 }
             ]
         }
