@@ -6,16 +6,16 @@
             "netmask": "bles_netmask",
             "gateway": "bles_address",
             "broadcast": "bles_broadcast",
+            "domain_name": "bles",
+            "domain_name_servers": [
+                "192.168.7.1"
+            ],
             "pools": [
                 {
                     "start_range": "192.168.7.10",
                     "end_range": "192.168.7.254",
                     "lease_time": "43200",
-                    "deny_other_hosts": "false",
-                    "domain_name": "bles",
-                    "domain_name_servers": [
-                        "192.168.7.1"
-                    ]
+                    "deny_other_hosts": "false"
                 }
             ],
             "hosts": [

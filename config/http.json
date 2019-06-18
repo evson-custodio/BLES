@@ -13,7 +13,7 @@
             "enabled": "true",
             "type": "frontend",
             "server_name": "chat.bles",
-            "document_root": "/",
+            "document_root": "/public",
             "origin": {
                 "git": "https://github.com/evsoncustodio/BLES-Chat"
             }
