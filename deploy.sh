@@ -76,5 +76,5 @@ do
     sed -i "s/<command>/$full_command $command/g" $app_service
 
     sudo systemctl enable $name.service
-    # sudo systemctl start $name.service
+    sudo systemctl restart $name.service
 done
