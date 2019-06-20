@@ -1,8 +1,14 @@
 #!/bin/bash
 
-sudo ./utils/update.sh
+sudo touch ./updated
 
-sudo apt install -y nginx unzip jq
+if [[ $(cat ./updated) != $(date +%F) ]]; then
+    sudo ./utils/update.sh
+
+    sudo apt install -y nginx unzip jq
+
+    sudo printf "$(date +%F)" > ./updated
+fi
 
 nginx_root=/etc/nginx
 date_now=$(date +%F_%H-%M-%S)

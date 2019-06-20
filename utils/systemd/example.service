@@ -1,0 +1,15 @@
+[Unit]
+Description=<description>
+After=network.target<services>
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+WorkingDirectory=<directory>
+ExecStart=/usr/bin/env<command>
+
+[Install]
+WantedBy=multi-user.target
+Alias=<name>

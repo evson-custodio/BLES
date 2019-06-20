@@ -1,0 +1,28 @@
+{
+    "applications": [
+        {
+            "name": "mibapi",
+            "description": "API RESTful for MIB",
+            "command": "npm start",
+            "deploy_directory": "/var/www/api.mib.bles",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/MIB-API"
+            },
+            "env_variables": {
+                "MONGO_URI": "mongo://mongo.bles:27017/mib"
+            }
+        },
+        {
+            "name": "chatapi",
+            "description": "API RESTful for ChatBLES",
+            "command": "npm start",
+            "deploy_directory": "/var/www/chat.bles",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/BLES-Chat"
+            },
+            "env_variables": {
+                "MONGO_URI": "mongo://mongo.bles:27017/chat-bles"
+            }
+        }
+    ]
+}

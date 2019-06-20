@@ -2,11 +2,16 @@
     "servers": [
         {
             "enabled": "true",
-            "type": "frontend",
-            "server_name": "home.bles",
+            "type": "node",
+            "server_name": "api.mib.bles",
             "document_root": "/",
             "origin": {
-                "git": "https://github.com/evsoncustodio/BLES-Frontend"
+                "git": "https://github.com/evsoncustodio/MIB-API"
+            },
+            "reverse_proxy": {
+                "path": "/",
+                "address": "127.0.0.1",
+                "port": "7777"
             }
         },
         {
@@ -16,6 +21,20 @@
             "document_root": "/public",
             "origin": {
                 "git": "https://github.com/evsoncustodio/BLES-Chat"
+            },
+            "reverse_proxy": {
+                "path": "/",
+                "address": "127.0.0.1",
+                "port": "8888"
+            }
+        },
+        {
+            "enabled": "true",
+            "type": "frontend",
+            "server_name": "home.bles",
+            "document_root": "/",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/BLES-Frontend"
             }
         },
         {

@@ -21,9 +21,9 @@
             "hosts": [
                 {
                     "hostname": "mongo",
-                    "mac": "00:db:df:1a:d5:f1",
+                    "mac": "b8:27:eb:5a:55:ec",
                     "address": "mongo_address",
-                    "assign_hostname": "false"
+                    "assign_hostname": "true"
                 }
             ]
         }

@@ -1,0 +1,22 @@
+{
+    "applications": [
+        {
+            "name": "mibapi",
+            "description": "API RESTful for MIB",
+            "command": "npm start",
+            "deploy_directory": "/var/www/api.mib.bles",
+            "origin": {
+                "git": "https://github.com/evsoncustodio/MIB-API",
+                "zip": "/home/ubuntu/MIB-API.zip",
+                "paste": "/home/ubuntu/MIB-API/"
+            },
+            "env_variables": {
+                "NODE_ENV": "production",
+                "MONGO_URI": "mongo://mongo.bles:27017/mib"
+            },
+            "after_services": [
+                "mongod.service"
+            ]
+        }
+    ]
+}

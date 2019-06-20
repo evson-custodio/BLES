@@ -25,7 +25,8 @@
                         "home",
                         "chat",
                         "maze",
-                        "pyraminx"
+                        "pyraminx",
+                        "api.mib"
                     ]
                 },
                 {
