@@ -4,7 +4,7 @@ sudo ./utils/update.sh
 
 sudo ./utils/nodejs_install.sh
 
-sudo apt install -y openjdk-8-jdk php7.0-cli
+sudo apt install -y openjdk-8-jdk
 
 date_now=$(date +%F_%H-%M-%S)
 
