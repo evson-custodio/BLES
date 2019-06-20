@@ -1,14 +1,8 @@
 #!/bin/bash
 
-sudo touch ./updated
+sudo ./utils/update.sh
 
-if [[ $(cat ./updated) != $(date +%F) ]]; then
-    sudo ./utils/update.sh
-
-    sudo apt install -y squid3 apache2-utils jq
-
-    sudo printf "$(date +%F)" > ./updated
-fi
+sudo apt install -y squid3 apache2-utils jq
 
 base=/etc/squid
 date_now=$(date +%F_%H-%M-%S)

@@ -1,10 +1,17 @@
 #!/bin/bash
 
-# Update package list
-sudo apt update
+sudo touch ./updated
 
-# Install updates
-sudo apt upgrade -y
+if [[ $(cat ./updated) != $(date +%F) ]]; then
 
-# Remove packages useless
-sudo apt autoremove -y
+    # Update package list
+    sudo apt update
+
+    # Install updates
+    sudo apt upgrade -y
+
+    # Remove packages useless
+    sudo apt autoremove -y
+
+    sudo printf "$(date +%F)" > ./updated
+fi

@@ -1,14 +1,8 @@
 #!/bin/bash
 
-sudo touch ./updated
+sudo ./utils/update.sh
 
-if [[ $(cat ./updated) != $(date +%F) ]]; then
-    sudo ./utils/update.sh
-
-    sudo apt install -y bind9 bind9utils bind9-doc dnsutils jq
-
-    sudo printf "$(date +%F)" > ./updated
-fi
+sudo apt install -y bind9 bind9utils bind9-doc dnsutils jq
 
 base=/etc/bind
 date_now=$(date +%F_%H-%M-%S)

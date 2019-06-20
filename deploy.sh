@@ -1,16 +1,10 @@
 #!/bin/bash
 
-sudo touch ./updated
+sudo ./utils/update.sh
 
-if [[ $(cat ./updated) != $(date +%F) ]]; then
-    sudo ./utils/update.sh
+sudo ./utils/nodejs_install.sh
 
-    sudo ./utils/nodejs_install.sh
-
-    sudo apt install -y openjdk-8-jdk php7.0-cli
-
-    sudo printf "$(date +%F)" > ./updated
-fi
+sudo apt install -y openjdk-8-jdk php7.0-cli
 
 date_now=$(date +%F_%H-%M-%S)
 
@@ -82,5 +76,5 @@ do
     sed -i "s/<command>/$full_command $command/g" $app_service
 
     sudo systemctl enable $name.service
-    sudo systemctl start $name.service
+    # sudo systemctl start $name.service
 done
