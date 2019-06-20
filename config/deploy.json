@@ -9,7 +9,7 @@
                 "git": "https://github.com/evsoncustodio/MIB-API"
             },
             "env_variables": {
-                "MONGO_URI": "mongo://mongo.bles:27017/mib"
+                "MONGODB_URI": "mongo://mongo.bles:27017/mib"
             }
         },
         {
@@ -21,7 +21,7 @@
                 "git": "https://github.com/evsoncustodio/BLES-Chat"
             },
             "env_variables": {
-                "MONGO_URI": "mongo://mongo.bles:27017/chat-bles"
+                "MONGODB_URI": "mongo://mongo.bles:27017/chat-bles"
             }
         }
     ]
