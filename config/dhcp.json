@@ -17,14 +17,6 @@
                     "lease_time": "43200",
                     "deny_other_hosts": "false"
                 }
-            ],
-            "hosts": [
-                {
-                    "hostname": "mongo",
-                    "mac": "b8:27:eb:5a:55:ec",
-                    "address": "mongo_address",
-                    "assign_hostname": "true"
-                }
             ]
         }
     ]

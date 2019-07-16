@@ -19,19 +19,8 @@
                     "aliases": [
                         "dns",
                         "dhcp",
-                        "proxy",
-                        "http",
-                        "www",
-                        "home",
-                        "chat",
-                        "maze",
-                        "pyraminx",
-                        "api.mib"
+                        "www"
                     ]
-                },
-                {
-                    "hostname": "mongo",
-                    "address": "mongo_address"
                 }
             ]
         }
